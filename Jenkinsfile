@@ -1,12 +1,23 @@
 pipeline {
-    agent {
-        docker { image 'node:18.17.1-alpine3.18' }
+  agent {
+    docker {
+      image 'alpine:3.18'
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh '''apk update --no-cache
+apk add curl'''
+      }
     }
+
+    stage('ip') {
+      steps {
+        sh 'curl -sS ipinfo.io/ip'
+      }
+    }
+
+  }
 }
