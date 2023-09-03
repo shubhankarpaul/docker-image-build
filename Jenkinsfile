@@ -6,14 +6,14 @@ pipeline {
 
   }
   stages {
-    stage('Test') {
+    stage('setup-env') {
       steps {
         sh '''apk update --no-cache
 apk add curl'''
       }
     }
 
-    stage('ip') {
+    stage('getip') {
       steps {
         sh 'curl -sS ipinfo.io/ip'
       }
