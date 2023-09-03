@@ -12,6 +12,7 @@ pipeline {
 apk add curl'''
       }
     }
+    }
     stage('getip') {
       steps {
         sh 'curl -sS ipinfo.io/ip'
@@ -19,4 +20,4 @@ apk add curl'''
     }
   }
 }
-}
+
