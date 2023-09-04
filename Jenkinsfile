@@ -20,4 +20,3 @@ apk add curl'''
     }
   }
 }
-
