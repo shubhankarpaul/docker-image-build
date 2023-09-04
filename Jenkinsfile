@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('setup-env') {
             agent {
-                docker { image 'alpine:3.18' }
+                docker { image 'alpine:3.18'
+                       args '-u root'}
             }
             steps {
                 sh '''apk update --no-cache
