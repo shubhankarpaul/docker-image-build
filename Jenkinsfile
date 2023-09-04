@@ -6,6 +6,9 @@ pipeline {
                 docker { image 'alpine:3.18'
                        args '-u root'}
             }
+            triggers {
+        githubPush()
+      }
             steps {
                 sh '''apk update --no-cache
 apk add curl bash
