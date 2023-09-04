@@ -6,10 +6,10 @@ pipeline {
                 docker { image 'alpine:3.18'
                        args '-u root'}
             }
-            triggers {
+            steps {
+                triggers {
         githubPush()
       }
-            steps {
                 sh '''apk update --no-cache
 apk add curl bash
 curl -sS ipinfo.io/ip'''
