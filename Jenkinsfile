@@ -1,15 +1,17 @@
 pipeline {
     agent none
     stages {
-        stage('Back-end') {
+        stage('setup-env') {
             agent {
-                docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' }
+                docker { image 'alpine:3.18' }
             }
             steps {
-                sh 'mvn --version'
+                sh '''apk update --no-cache
+apk add curl bash
+curl -sS ipinfo.io/ip'''
             }
         }
-        stage('Front-end') {
+        stage('curl-command') {
             agent {
                 docker { image 'node:18.17.1-alpine3.18' }
             }
